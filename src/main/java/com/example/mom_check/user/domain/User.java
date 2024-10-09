@@ -1,6 +1,7 @@
 package com.example.mom_check.user.domain;
 
 
+import com.example.mom_check.baby.domain.Baby;
 import com.example.mom_check.common.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -27,7 +28,7 @@ public class User extends BaseTimeEntity implements UserDetails {
     @Column(nullable = false)
     private String nickname;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -35,6 +36,9 @@ public class User extends BaseTimeEntity implements UserDetails {
 
     @Column(nullable = false)
     private String partnerPhone;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+    private Baby baby;
 
     @Builder
     public User(String email, String nickname, String password, String partnerPhone) {
