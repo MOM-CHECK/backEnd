@@ -15,6 +15,8 @@ public enum ErrorCode {
     WRONG_PASSWORD(HttpStatus.BAD_REQUEST.value(), "Bad Request", "비밀번호가 일치하지 않습니다."),
     // 파일을 업로드 할 수 없을 때 오류
     FILE_UPLOAD_FAILED(HttpStatus.BAD_REQUEST.value(), "Bad Request", "파일을 업로드 하는 데 실패했습니다."),
+    // 아기 성별이 잘못됨
+    WRONG_SEX_TYPE(HttpStatus.BAD_REQUEST.value(), "Bad Request", "성별은 GIRL과 BOY와 X만 가능합니다."),
 
     // 만료된 토큰 오류
     EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED.value(), "Unauthorized", "유효하지 않은 토큰입니다."),
