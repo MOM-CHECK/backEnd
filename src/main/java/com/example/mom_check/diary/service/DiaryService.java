@@ -38,6 +38,12 @@ public class DiaryService {
     }
 
     @Transactional
+    public DetailDiaryResponse findById(User user, UUID id) {
+        Diary diary = findByIdAndUser(id, user);
+        return DetailDiaryResponse.toDto(diary);
+    }
+
+    @Transactional
     public DetailDiaryResponse editDiary(User user, UUID id, UpdateDiaryRequest req) {
         Diary diary = diaryRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(DIARY_NOT_FOUND));
@@ -60,5 +66,10 @@ public class DiaryService {
 
     public Boolean isAuthor(Diary diary, User user) {
         return user.equals(diary.getUser());
+    }
+
+    public Diary findByIdAndUser(UUID id, User user) {
+        return diaryRepository.findByIdAndUser(id, user)
+                .orElseThrow(() -> new BusinessException(DIARY_NOT_FOUND));
     }
 }

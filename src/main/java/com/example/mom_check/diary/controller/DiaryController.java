@@ -33,4 +33,11 @@ public class DiaryController {
         DetailDiaryResponse diary = diaryService.editDiary(user, id, req);
         return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 수정했습니다.", diary);
     }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CustomResponse findById(@PathVariable("id") UUID id, @Login User user) {
+        DetailDiaryResponse diary = diaryService.findById(user, id);
+        return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 조회했습니다.", diary);
+    }
 }
