@@ -13,8 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-import static com.example.mom_check.common.exception.ErrorCode.DUPLICATED_EMAIL;
-import static com.example.mom_check.common.exception.ErrorCode.USER_NOT_FOUND;
+import static com.example.mom_check.common.exception.ErrorCode.*;
 
 @Service
 @RequiredArgsConstructor
@@ -52,6 +51,13 @@ public class UserService {
 
         initialPhysicalRepository.save(physical);
 
+        return InitialPhysicalResponse.toDto(user, physical);
+    }
+
+    @Transactional
+    public InitialPhysicalResponse getInitialPhysical(User user) {
+        InitialPhysical physical = initialPhysicalRepository.findById(user.getId())
+                .orElseThrow(() -> new BusinessException(INITIAL_PHYSICAL_NOT_FOUND));
         return InitialPhysicalResponse.toDto(user, physical);
     }
 }

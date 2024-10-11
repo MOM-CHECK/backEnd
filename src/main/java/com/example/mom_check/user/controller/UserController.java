@@ -30,4 +30,11 @@ public class UserController {
         InitialPhysicalResponse res = userService.createInitialPhysical(user, req);
         return CustomResponse.response(HttpStatus.CREATED, "임신 전 데이터를 정상적으로 저장했습니다.", res);
     }
+
+    @GetMapping("/initial-physical")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CustomResponse getInitialPhysical(@Login User user) {
+        InitialPhysicalResponse res = userService.getInitialPhysical(user);
+        return CustomResponse.response(HttpStatus.CREATED, "임신 전 데이터를 정상적으로 조회했습니다.", res);
+    }
 }
