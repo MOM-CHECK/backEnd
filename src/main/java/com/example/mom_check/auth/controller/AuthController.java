@@ -2,6 +2,8 @@ package com.example.mom_check.auth.controller;
 
 import com.example.mom_check.auth.dto.JoinRequest;
 import com.example.mom_check.auth.dto.JoinResponse;
+import com.example.mom_check.auth.dto.LoginRequest;
+import com.example.mom_check.auth.dto.LoginResponse;
 import com.example.mom_check.auth.service.AuthService;
 import com.example.mom_check.common.response.CustomResponse;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +22,12 @@ public class AuthController {
     public CustomResponse join(@Validated @RequestBody JoinRequest req) {
         JoinResponse res = authService.join(req);
         return CustomResponse.response(HttpStatus.CREATED, "회원가입에 성공하셨습니다.", res);
+    }
+
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public CustomResponse login(@Validated @RequestBody LoginRequest req) {
+        LoginResponse res = authService.logIn(req);
+        return CustomResponse.response(HttpStatus.OK, "로그인에 성공하셨습니다.", res);
     }
 }

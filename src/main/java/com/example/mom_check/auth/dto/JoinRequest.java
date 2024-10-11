@@ -21,7 +21,7 @@ public class JoinRequest {
     private String nickname;
 
     @NotBlank(message = "비밀번호를 입력하지 않았습니다.")
-    @Pattern(regexp = "^(?=.*[a-zA-Z])((?=.*\\\\d)|(?=.*\\\\W)).{8,16}$", message = "비밀번호는 영문, 숫자, 특수문자를 포함하여 8글자 이상, 16글자 이하로 작성해야 합니다.")
+    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,16}$", message = "비밀번호는 영문, 숫자, 특수문자를 포함하여 8글자 이상, 16글자 이하로 작성해야 합니다.")
     private String password;
 
     @NotBlank(message = "보호자 휴대폰 번호를 입력하지 않았습니다.")
