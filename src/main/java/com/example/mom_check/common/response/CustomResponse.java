@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatusCode;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 @Getter
 @AllArgsConstructor
@@ -18,6 +18,6 @@ public class CustomResponse {
     }
 
     public static CustomResponse response(final HttpStatusCode statusCode, final String message) {
-        return new CustomResponse(statusCode.value(), message, new ArrayList<>());
+        return new CustomResponse(statusCode.value(), message, Map.of());
     }
 }

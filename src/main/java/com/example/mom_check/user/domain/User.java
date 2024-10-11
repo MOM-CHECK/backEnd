@@ -40,6 +40,9 @@ public class User extends BaseTimeEntity implements UserDetails {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private Baby baby;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+    private InitialPhysical initialPhysical;
+
     @Builder
     public User(String email, String nickname, String password, String partnerPhone) {
         this.email = email;

@@ -31,6 +31,8 @@ public enum ErrorCode {
     IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Not Found", "존재하지 않는 이미지입니다."),
     // 찾을 수 없는 아기 오류
     BABY_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Not Found", "존재하지 않는 아기입니다."),
+    // 찾을 수 없는 임신 전 신체 정보
+    INITIAL_PHYSICAL_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Not Found", "존재하지 않는 임신 전 신체 정보입니다."),
 
     // 이메일 중복 오류
     DUPLICATED_EMAIL(HttpStatus.CONFLICT.value(), "Conflict", "이미 존재하는 이메일입니다."),
