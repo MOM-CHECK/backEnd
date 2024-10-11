@@ -10,8 +10,9 @@ public class JoinResponse {
     private String email;
     private String nickname;
     private String partnerPhone;
+    private String accessToken;
 
-    public static JoinResponse toDto(User user) {
-        return new JoinResponse(user.getEmail(), user.getNickname(), user.getPartnerPhone());
+    public static JoinResponse toDto(User user, String accessToken) {
+        return new JoinResponse(user.getEmail(), user.getNickname(), user.getPartnerPhone(), accessToken);
     }
 }
