@@ -4,11 +4,15 @@ import com.example.mom_check.common.annotation.Login;
 import com.example.mom_check.common.response.CustomResponse;
 import com.example.mom_check.diary.dto.CreateDiaryRequest;
 import com.example.mom_check.diary.dto.DetailDiaryResponse;
+import com.example.mom_check.diary.dto.UpdateDiaryRequest;
 import com.example.mom_check.diary.service.DiaryService;
 import com.example.mom_check.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/diaries")
@@ -21,5 +25,12 @@ public class DiaryController {
     public CustomResponse createDiary(@Login User user, @RequestBody CreateDiaryRequest req) {
         DetailDiaryResponse diary = diaryService.createDiary(user, req);
         return CustomResponse.response(HttpStatus.CREATED, "일기를 정상적으로 작성했습니다.", diary);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CustomResponse editDiary(@PathVariable("id") UUID id, @Validated @RequestBody UpdateDiaryRequest req, @Login User user) {
+        DetailDiaryResponse diary = diaryService.editDiary(user, id, req);
+        return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 수정했습니다.", diary);
     }
 }

@@ -1,14 +1,20 @@
 package com.example.mom_check.diary.service;
 
+import com.example.mom_check.common.exception.BusinessException;
 import com.example.mom_check.diary.domain.Diary;
 import com.example.mom_check.diary.dto.CreateDiaryRequest;
 import com.example.mom_check.diary.dto.DetailDiaryResponse;
+import com.example.mom_check.diary.dto.UpdateDiaryRequest;
 import com.example.mom_check.diary.repository.DiaryRepository;
 import com.example.mom_check.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
+
+import static com.example.mom_check.common.exception.ErrorCode.*;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +35,30 @@ public class DiaryService {
         diaryRepository.save(diary);
 
         return DetailDiaryResponse.toDto(diary);
+    }
+
+    @Transactional
+    public DetailDiaryResponse editDiary(User user, UUID id, UpdateDiaryRequest req) {
+        Diary diary = diaryRepository.findById(id)
+                .orElseThrow(() -> new BusinessException(DIARY_NOT_FOUND));
+        validateAuthor(diary, user);
+
+        diary.update(
+                req.getTitle(),
+                req.getIcon(),
+                req.getContent()
+        );
+
+        return DetailDiaryResponse.toDto(diary);
+    }
+
+    private void validateAuthor(Diary diary, User user) {
+        if (!isAuthor(diary, user)) {
+            throw new BusinessException(UNAUTHORIZED_MEMBER);
+        }
+    }
+
+    public Boolean isAuthor(Diary diary, User user) {
+        return user.equals(diary.getUser());
     }
 }
