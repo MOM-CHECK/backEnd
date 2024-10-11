@@ -14,7 +14,7 @@ public class UserController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public CustomResponse join(@RequestParam String email) {
+    public CustomResponse validateEmailDuplicated(@RequestParam String email) {
         userService.isDuplicatedEmail(email);
         return CustomResponse.response(HttpStatus.OK, "이메일 중복 확인을 정상적으로 마쳤습니다.");
     }
