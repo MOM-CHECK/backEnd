@@ -32,7 +32,7 @@ public class Baby extends BaseTimeEntity {
     private SexType sex;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name="user_id", nullable = false, unique = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
