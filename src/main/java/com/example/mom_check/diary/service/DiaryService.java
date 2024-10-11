@@ -14,4 +14,20 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Slf4j
 public class DiaryService {
+    private final DiaryRepository diaryRepository;
+
+    @Transactional
+    public DetailDiaryResponse createDiary(User user, CreateDiaryRequest req) {
+        Diary diary = Diary.builder()
+                .title(req.getTitle())
+                .content(req.getContent())
+                .date(req.getDate())
+                .icon(req.getIcon())
+                .user(user)
+                .build();
+
+        diaryRepository.save(diary);
+
+        return DetailDiaryResponse.toDto(diary);
+    }
 }
