@@ -4,6 +4,7 @@ import com.example.mom_check.common.exception.BusinessException;
 import com.example.mom_check.diary.domain.Diary;
 import com.example.mom_check.diary.dto.CreateDiaryRequest;
 import com.example.mom_check.diary.dto.DetailDiaryResponse;
+import com.example.mom_check.diary.dto.DiaryResponse;
 import com.example.mom_check.diary.dto.UpdateDiaryRequest;
 import com.example.mom_check.diary.repository.DiaryRepository;
 import com.example.mom_check.user.domain.User;
@@ -44,6 +45,17 @@ public class DiaryService {
     }
 
     @Transactional
+    public DiaryResponse findByDate(User user, String date) {
+        Diary diary = findByDateAndUser(date, user);
+        if (diary != null) {
+            return DiaryResponse.toDto(diary);
+        } else {
+            return null;
+        }
+
+    }
+
+    @Transactional
     public DetailDiaryResponse editDiary(User user, UUID id, UpdateDiaryRequest req) {
         Diary diary = diaryRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(DIARY_NOT_FOUND));
@@ -64,12 +76,17 @@ public class DiaryService {
         }
     }
 
-    public Boolean isAuthor(Diary diary, User user) {
+    private Boolean isAuthor(Diary diary, User user) {
         return user.equals(diary.getUser());
     }
 
-    public Diary findByIdAndUser(UUID id, User user) {
+    private Diary findByIdAndUser(UUID id, User user) {
         return diaryRepository.findByIdAndUser(id, user)
                 .orElseThrow(() -> new BusinessException(DIARY_NOT_FOUND));
+    }
+
+    private Diary findByDateAndUser(String date, User user) {
+        return diaryRepository.findByDateAndUser(date, user)
+                .orElse(null);
     }
 }

@@ -4,6 +4,7 @@ import com.example.mom_check.common.annotation.Login;
 import com.example.mom_check.common.response.CustomResponse;
 import com.example.mom_check.diary.dto.CreateDiaryRequest;
 import com.example.mom_check.diary.dto.DetailDiaryResponse;
+import com.example.mom_check.diary.dto.DiaryResponse;
 import com.example.mom_check.diary.dto.UpdateDiaryRequest;
 import com.example.mom_check.diary.service.DiaryService;
 import com.example.mom_check.user.domain.User;
@@ -39,5 +40,16 @@ public class DiaryController {
     public CustomResponse findById(@PathVariable("id") UUID id, @Login User user) {
         DetailDiaryResponse diary = diaryService.findById(user, id);
         return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 조회했습니다.", diary);
+    }
+
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public CustomResponse findByDate(@RequestParam("date") String date, @Login User user) {
+        DiaryResponse diary = diaryService.findByDate(user, date);
+        if (diary != null) {
+            return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 조회했습니다.", diary);
+        } else {
+            return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 조회했습니다.");
+        }
     }
 }
