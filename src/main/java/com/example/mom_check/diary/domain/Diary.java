@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Table(name="diary")
@@ -32,7 +31,7 @@ public class Diary extends BaseTimeEntity {
     private String content;
 
     @Column(nullable = false)
-    private Instant date;
+    private String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
@@ -40,7 +39,7 @@ public class Diary extends BaseTimeEntity {
     private User user;
 
     @Builder
-    public Diary(String title, String icon, String content, Instant date, User user) {
+    public Diary(String title, String icon, String content, String date, User user) {
         this.title = title;
         this.icon = icon;
         this.content = content;

@@ -4,7 +4,6 @@ import com.example.mom_check.diary.domain.Diary;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -12,7 +11,8 @@ import java.util.UUID;
 @Getter
 public class DetailDiaryResponse {
     private UUID id;
-    private Instant date;
+    private String date;
+    private String icon;
     private String title;
     private String content;
     private LocalDateTime createdAt;
@@ -21,6 +21,7 @@ public class DetailDiaryResponse {
         return new DetailDiaryResponse(
                 diary.getId(),
                 diary.getDate(),
+                diary.getIcon(),
                 diary.getTitle(),
                 diary.getContent(),
                 diary.getCreatedAt()

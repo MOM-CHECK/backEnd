@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
-
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,5 +20,5 @@ public class CreateDiaryRequest {
     private String content;
 
     @NotNull(message = "날짜을 입력하지 않았습니다.")
-    private Instant date;
+    private String date;
 }
