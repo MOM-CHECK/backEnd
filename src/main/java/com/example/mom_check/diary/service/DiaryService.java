@@ -70,6 +70,13 @@ public class DiaryService {
         return DetailDiaryResponse.toDto(diary);
     }
 
+    @Transactional
+    public void deleteDiary(UUID id, User user) {
+        Diary diary = findByIdAndUser(id, user);
+        validateAuthor(diary, user);
+        diaryRepository.delete(diary);
+    }
+
     private void validateAuthor(Diary diary, User user) {
         if (!isAuthor(diary, user)) {
             throw new BusinessException(UNAUTHORIZED_MEMBER);

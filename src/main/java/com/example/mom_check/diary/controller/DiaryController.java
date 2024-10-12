@@ -52,4 +52,11 @@ public class DiaryController {
             return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 조회했습니다.");
         }
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CustomResponse deleteDiary(@PathVariable("id") UUID id, @Login User user) {
+        diaryService.deleteDiary(id, user);
+        return CustomResponse.response(HttpStatus.OK, "일기를 정상적으로 삭제되었습니다.");
+    }
 }
