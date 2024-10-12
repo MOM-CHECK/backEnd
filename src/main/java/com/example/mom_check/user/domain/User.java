@@ -3,6 +3,7 @@ package com.example.mom_check.user.domain;
 
 import com.example.mom_check.baby.domain.Baby;
 import com.example.mom_check.common.domain.BaseTimeEntity;
+import com.example.mom_check.diary.domain.Diary;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -42,6 +43,9 @@ public class User extends BaseTimeEntity implements UserDetails {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private InitialPhysical initialPhysical;
+
+    @OneToMany(mappedBy = "user")
+    private List<Diary> diaries;
 
     @Builder
     public User(String email, String nickname, String password, String partnerPhone) {
