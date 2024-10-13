@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Table(name="schedule")
@@ -24,8 +25,8 @@ public class Schedule extends BaseTimeEntity {
     @Column(nullable = false)
     private String date;
 
-    @Column(nullable = false)
-    private String time;
+    @Column()
+    private LocalTime time;
 
     @Column(nullable = false)
     private String color;
@@ -39,7 +40,7 @@ public class Schedule extends BaseTimeEntity {
     private User user;
 
     @Builder
-    public Schedule(String date, String time, String color, String content, User user) {
+    public Schedule(String date, LocalTime time, String color, String content, User user) {
         this.date = date;
         this.time = time;
         this.color = color;
@@ -47,7 +48,7 @@ public class Schedule extends BaseTimeEntity {
         this.user = user;
     }
 
-    public void update(String date, String time, String color, String content) {
+    public void update(String date, LocalTime time, String color, String content) {
         this.date = date;
         this.time = time;
         this.color = color;
