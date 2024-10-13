@@ -19,6 +19,6 @@ public class CreateDiaryRequest {
     @NotBlank(message = "내용을 입력하지 않았습니다.")
     private String content;
 
-    @NotNull(message = "날짜을 입력하지 않았습니다.")
+    @NotBlank(message = "날짜를 입력하지 않았습니다.")
     private String date;
 }
