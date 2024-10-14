@@ -17,6 +17,11 @@ public enum ErrorCode {
     FILE_UPLOAD_FAILED(HttpStatus.BAD_REQUEST.value(), "Bad Request", "파일을 업로드 하는 데 실패했습니다."),
     // 아기 성별이 잘못됨
     WRONG_SEX_TYPE(HttpStatus.BAD_REQUEST.value(), "Bad Request", "성별은 GIRL과 BOY와 X만 가능합니다."),
+    // 몸무게 상태 타입이 잘못됨
+    WRONG_WEIGHT_STATUS_TYPE(HttpStatus.BAD_REQUEST.value(), "Bad Request", "몸무게 상태 타입은 GOOD, OVER, UNDER만 가능합니다."),
+    // 주차가 1~40주차가 아님
+    WRONG_WEEK(HttpStatus.BAD_REQUEST.value(), "Bad Request", "1주차부터 40주차까지만 조회 가능합니다."),
+
 
     // 만료된 토큰 오류
     EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED.value(), "Unauthorized", "유효하지 않은 토큰입니다."),
@@ -37,9 +42,15 @@ public enum ErrorCode {
     DIARY_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Not Found", "존재하지 않는 일기입니다."),
     // 찾을 수 없는 일정 오류
     SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Not Found", "존재하지 않는 일정입니다."),
-    
+    // 찾을 수 없는 몸무게 오류
+    WEIGHT_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Not Found", "존재하지 않는 몸무게입니다."),
+    // 찾을 수 없는 몸무게 추천 오류
+    WEIGHT_RECOMMENDATION_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "Not Found", "존재하지 않는 주차별 몸무게 추천 정보입니다."),
+
     // 이메일 중복 오류
     DUPLICATED_EMAIL(HttpStatus.CONFLICT.value(), "Conflict", "이미 존재하는 이메일입니다."),
+    // 하루에 2개 이상 몸무게 입력 오류
+    DUPLICATED_DATE_WEIGHT(HttpStatus.CONFLICT.value(), "Conflict", "해당 날짜의 몸무게는 이미 입력했습니다."),
 
     // 접근이 금지된 오류
     ACCESS_DENIED(HttpStatus.FORBIDDEN.value(), "Forbidden", "접근이 거부됐습니다."),

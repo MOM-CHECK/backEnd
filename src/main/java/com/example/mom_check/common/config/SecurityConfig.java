@@ -44,7 +44,9 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/diaries"),
                                 new AntPathRequestMatcher("/diaries/*"),
                                 new AntPathRequestMatcher("/schedules"),
-                                new AntPathRequestMatcher("/schedules/*")
+                                new AntPathRequestMatcher("/schedules/*"),
+                                new AntPathRequestMatcher("/weight"),
+                                new AntPathRequestMatcher("/weight/*")
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
