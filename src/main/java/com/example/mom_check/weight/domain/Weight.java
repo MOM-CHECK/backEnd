@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Table(name="weight")
@@ -23,8 +23,8 @@ public class Weight extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false)
-    private String date;
+    @Column(nullable = false, unique = true)
+    private LocalDate date;
 
     @Column(nullable = false)
     private Double weight;
@@ -33,13 +33,13 @@ public class Weight extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private WeightStatusType status;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false, unique = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     @Builder
-    public Weight(String date, Double weight, WeightStatusType status, User user) {
+    public Weight(LocalDate date, Double weight, WeightStatusType status, User user) {
         this.date = date;
         this.weight = weight;
         this.status = status;

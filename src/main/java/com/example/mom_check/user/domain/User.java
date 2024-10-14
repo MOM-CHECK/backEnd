@@ -44,9 +44,6 @@ public class User extends BaseTimeEntity implements UserDetails {
     private Baby baby;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
-    private Weight weight;
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private InitialPhysical initialPhysical;
 
     @OneToMany(mappedBy = "user")
@@ -54,6 +51,9 @@ public class User extends BaseTimeEntity implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<Schedule> schedules;
+
+    @OneToMany(mappedBy = "user")
+    private List<Weight> weight;
 
     @Builder
     public User(String email, String nickname, String password, String partnerPhone) {
