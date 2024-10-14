@@ -1,0 +1,722 @@
+[
+  {
+    "bmi": "under",
+    "week": 1,
+    "min": 0,
+    "max": 0
+  },
+  {
+    "bmi": "under",
+    "week": 2,
+    "min": 0.04,
+    "max": 0.2
+  },
+  {
+    "bmi": "under",
+    "week": 3,
+    "min": 0.08,
+    "max": 0.3
+  },
+  {
+    "bmi": "under",
+    "week": 4,
+    "min": 0.1,
+    "max": 0.5
+  },
+  {
+    "bmi": "under",
+    "week": 5,
+    "min": 0.2,
+    "max": 0.7
+  },
+  {
+    "bmi": "under",
+    "week": 6,
+    "min": 0.2,
+    "max": 0.8
+  },
+  {
+    "bmi": "under",
+    "week": 7,
+    "min": 0.2,
+    "max": 1.0
+  },
+  {
+    "bmi": "under",
+    "week": 8,
+    "min": 0.3,
+    "max": 1.2
+  },
+  {
+    "bmi": "under",
+    "week": 9,
+    "min": 0.3,
+    "max": 1.3
+  },
+  {
+    "bmi": "under",
+    "week": 10,
+    "min": 0.4,
+    "max": 1.5
+  },
+  {
+    "bmi": "under",
+    "week": 11,
+    "min": 0.4,
+    "max": 1.7
+  },
+  {
+    "bmi": "under",
+    "week": 12,
+    "min": 0.5,
+    "max": 1.8
+  },
+  {
+    "bmi": "under",
+    "week": 13,
+    "min": 0.5,
+    "max": 2.0
+  },
+  {
+    "bmi": "under",
+    "week": 14,
+    "min": 1.0,
+    "max": 2.6
+  },
+  {
+    "bmi": "under",
+    "week": 15,
+    "min": 1.4,
+    "max": 3.2
+  },
+  {
+    "bmi": "under",
+    "week": 16,
+    "min": 1.9,
+    "max": 3.8
+  },
+  {
+    "bmi": "under",
+    "week": 17,
+    "min": 2.3,
+    "max": 4.4
+  },
+  {
+    "bmi": "under",
+    "week": 18,
+    "min": 2.8,
+    "max": 5.0
+  },
+  {
+    "bmi": "under",
+    "week": 19,
+    "min": 3.2,
+    "max": 5.6
+  },
+  {
+    "bmi": "under",
+    "week": 20,
+    "min": 3.7,
+    "max": 6.2
+  },
+  {
+    "bmi": "under",
+    "week": 21,
+    "min": 4.1,
+    "max": 6.8
+  },
+  {
+    "bmi": "under",
+    "week": 22,
+    "min": 4.6,
+    "max": 7.4
+  },
+  {
+    "bmi": "under",
+    "week": 23,
+    "min": 5.0,
+    "max": 8.0
+  },
+  {
+    "bmi": "under",
+    "week": 24,
+    "min": 5.5,
+    "max": 8.6
+  },
+  {
+    "bmi": "under",
+    "week": 25,
+    "min": 5.9,
+    "max": 9.2
+  },
+  {
+    "bmi": "under",
+    "week": 26,
+    "min": 6.4,
+    "max": 9.8
+  },
+  {
+    "bmi": "under",
+    "week": 27,
+    "min": 6.8,
+    "max": 10.4
+  },
+  {
+    "bmi": "under",
+    "week": 28,
+    "min": 7.3,
+    "max": 11.0
+  },
+  {
+    "bmi": "under",
+    "week": 29,
+    "min": 7.7,
+    "max": 11.6
+  },
+  {
+    "bmi": "under",
+    "week": 30,
+    "min": 8.2,
+    "max": 12.2
+  },
+  {
+    "bmi": "under",
+    "week": 31,
+    "min": 8.6,
+    "max": 12.8
+  },
+  {
+    "bmi": "under",
+    "week": 32,
+    "min": 9.1,
+    "max": 13.4
+  },
+  {
+    "bmi": "under",
+    "week": 33,
+    "min": 9.5,
+    "max": 14.0
+  },
+  {
+    "bmi": "under",
+    "week": 34,
+    "min": 10.0,
+    "max": 14.6
+  },
+  {
+    "bmi": "under",
+    "week": 35,
+    "min": 10.4,
+    "max": 15.2
+  },
+  {
+    "bmi": "under",
+    "week": 36,
+    "min": 10.9,
+    "max": 15.8
+  },
+  {
+    "bmi": "under",
+    "week": 37,
+    "min": 11.3,
+    "max": 16.3
+  },
+  {
+    "bmi": "under",
+    "week": 38,
+    "min": 11.8,
+    "max": 16.9
+  },
+  {
+    "bmi": "under",
+    "week": 39,
+    "min": 12.2,
+    "max": 17.5
+  },
+  {
+    "bmi": "under",
+    "week": 40,
+    "min": 12.7,
+    "max": 18.1
+  },
+  {
+    "bmi": "normal",
+    "week": 1,
+    "min": 0,
+    "max": 0
+  },
+  {
+    "bmi": "normal",
+    "week": 2,
+    "min": 0.04,
+    "max": 0.2
+  },
+  {
+    "bmi": "normal",
+    "week": 3,
+    "min": 0.08,
+    "max": 0.3
+  },
+  {
+    "bmi": "normal",
+    "week": 4,
+    "min": 0.1,
+    "max": 0.5
+  },
+  {
+    "bmi": "normal",
+    "week": 5,
+    "min": 0.2,
+    "max": 0.7
+  },
+  {
+    "bmi": "normal",
+    "week": 6,
+    "min": 0.2,
+    "max": 0.8
+  },
+  {
+    "bmi": "normal",
+    "week": 7,
+    "min": 0.2,
+    "max": 1.0
+  },
+  {
+    "bmi": "normal",
+    "week": 8,
+    "min": 0.3,
+    "max": 1.2
+  },
+  {
+    "bmi": "normal",
+    "week": 9,
+    "min": 0.3,
+    "max": 1.3
+  },
+  {
+    "bmi": "normal",
+    "week": 10,
+    "min": 0.4,
+    "max": 1.5
+  },
+  {
+    "bmi": "normal",
+    "week": 11,
+    "min": 0.4,
+    "max": 1.7
+  },
+  {
+    "bmi": "normal",
+    "week": 12,
+    "min": 0.5,
+    "max": 1.8
+  },
+  {
+    "bmi": "normal",
+    "week": 13,
+    "min": 0.5,
+    "max": 2.0
+  },
+  {
+    "bmi": "normal",
+    "week": 14,
+    "min": 0.9,
+    "max": 2.5
+  },
+  {
+    "bmi": "normal",
+    "week": 15,
+    "min": 1.3,
+    "max": 3.0
+  },
+  {
+    "bmi": "normal",
+    "week": 16,
+    "min": 1.7,
+    "max": 3.5
+  },
+  {
+    "bmi": "normal",
+    "week": 17,
+    "min": 2.1,
+    "max": 4.1
+  },
+  {
+    "bmi": "normal",
+    "week": 18,
+    "min": 2.5,
+    "max": 4.6
+  },
+  {
+    "bmi": "normal",
+    "week": 19,
+    "min": 2.9,
+    "max": 5.1
+  },
+  {
+    "bmi": "normal",
+    "week": 20,
+    "min": 3.3,
+    "max": 5.6
+  },
+  {
+    "bmi": "normal",
+    "week": 21,
+    "min": 3.7,
+    "max": 6.1
+  },
+  {
+    "bmi": "normal",
+    "week": 22,
+    "min": 4.1,
+    "max": 6.6
+  },
+  {
+    "bmi": "normal",
+    "week": 23,
+    "min": 4.5,
+    "max": 7.1
+  },
+  {
+    "bmi": "normal",
+    "week": 24,
+    "min": 4.9,
+    "max": 7.7
+  },
+  {
+    "bmi": "normal",
+    "week": 25,
+    "min": 5.3,
+    "max": 8.2
+  },
+  {
+    "bmi": "normal",
+    "week": 26,
+    "min": 5.7,
+    "max": 8.7
+  },
+  {
+    "bmi": "normal",
+    "week": 27,
+    "min": 6.1,
+    "max": 9.2
+  },
+  {
+    "bmi": "normal",
+    "week": 28,
+    "min": 6.5,
+    "max": 9.7
+  },
+  {
+    "bmi": "normal",
+    "week": 29,
+    "min": 6.9,
+    "max": 10.2
+  },
+  {
+    "bmi": "normal",
+    "week": 30,
+    "min": 7.3,
+    "max": 10.7
+  },
+  {
+    "bmi": "normal",
+    "week": 31,
+    "min": 7.7,
+    "max": 11.2
+  },
+  {
+    "bmi": "normal",
+    "week": 32,
+    "min": 8.1,
+    "max": 11.8
+  },
+  {
+    "bmi": "normal",
+    "week": 33,
+    "min": 8.5,
+    "max": 12.3
+  },
+  {
+    "bmi": "normal",
+    "week": 34,
+    "min": 8.9,
+    "max": 12.8
+  },
+  {
+    "bmi": "normal",
+    "week": 35,
+    "min": 9.3,
+    "max": 13.3
+  },
+  {
+    "bmi": "normal",
+    "week": 36,
+    "min": 9.7,
+    "max": 13.8
+  },
+  {
+    "bmi": "normal",
+    "week": 37,
+    "min": 10.1,
+    "max": 14.3
+  },
+  {
+    "bmi": "normal",
+    "week": 38,
+    "min": 10.5,
+    "max": 14.8
+  },
+  {
+    "bmi": "normal",
+    "week": 39,
+    "min": 10.9,
+    "max": 15.4
+  },
+  {
+    "bmi": "normal",
+    "week": 40,
+    "min": 11.3,
+    "max": 15.9
+  },
+  {
+    "bmi": "obesity",
+    "week": 1,
+    "min": 0,
+    "max": 0
+  },
+  {
+    "bmi": "obesity",
+    "week": 2,
+    "min": 0.04,
+    "max": 0.2
+  },
+  {
+    "bmi": "obesity",
+    "week": 3,
+    "min": 0.08,
+    "max": 0.3
+  },
+  {
+    "bmi": "obesity",
+    "week": 4,
+    "min": 0.1,
+    "max": 0.5
+  },
+  {
+    "bmi": "obesity",
+    "week": 5,
+    "min": 0.2,
+    "max": 0.7
+  },
+  {
+    "bmi": "obesity",
+    "week": 6,
+    "min": 0.2,
+    "max": 0.8
+  },
+  {
+    "bmi": "obesity",
+    "week": 7,
+    "min": 0.2,
+    "max": 1.0
+  },
+  {
+    "bmi": "obesity",
+    "week": 8,
+    "min": 0.3,
+    "max": 1.2
+  },
+  {
+    "bmi": "obesity",
+    "week": 9,
+    "min": 0.3,
+    "max": 1.3
+  },
+  {
+    "bmi": "obesity",
+    "week": 10,
+    "min": 0.4,
+    "max": 1.5
+  },
+  {
+    "bmi": "obesity",
+    "week": 11,
+    "min": 0.4,
+    "max": 1.7
+  },
+  {
+    "bmi": "obesity",
+    "week": 12,
+    "min": 0.5,
+    "max": 1.8
+  },
+  {
+    "bmi": "obesity",
+    "week": 13,
+    "min": 0.5,
+    "max": 2.0
+  },
+  {
+    "bmi": "obesity",
+    "week": 14,
+    "min": 0.7,
+    "max": 2.3
+  },
+  {
+    "bmi": "obesity",
+    "week": 15,
+    "min": 1.0,
+    "max": 2.7
+  },
+  {
+    "bmi": "obesity",
+    "week": 16,
+    "min": 1.2,
+    "max": 3.0
+  },
+  {
+    "bmi": "obesity",
+    "week": 17,
+    "min": 1.4,
+    "max": 3.4
+  },
+  {
+    "bmi": "obesity",
+    "week": 18,
+    "min": 1.7,
+    "max": 3.7
+  },
+  {
+    "bmi": "obesity",
+    "week": 19,
+    "min": 1.9,
+    "max": 4.1
+  },
+  {
+    "bmi": "obesity",
+    "week": 20,
+    "min": 2.1,
+    "max": 4.4
+  },
+  {
+    "bmi": "obesity",
+    "week": 21,
+    "min": 2.4,
+    "max": 4.8
+  },
+  {
+    "bmi": "obesity",
+    "week": 22,
+    "min": 2.6,
+    "max": 5.1
+  },
+  {
+    "bmi": "obesity",
+    "week": 23,
+    "min": 2.8,
+    "max": 5.5
+  },
+  {
+    "bmi": "obesity",
+    "week": 24,
+    "min": 3.1,
+    "max": 5.8
+  },
+  {
+    "bmi": "obesity",
+    "week": 25,
+    "min": 3.3,
+    "max": 6.1
+  },
+  {
+    "bmi": "obesity",
+    "week": 26,
+    "min": 3.5,
+    "max": 6.5
+  },
+  {
+    "bmi": "obesity",
+    "week": 27,
+    "min": 3.8,
+    "max": 6.8
+  },
+  {
+    "bmi": "obesity",
+    "week": 28,
+    "min": 4.0,
+    "max": 7.2
+  },
+  {
+    "bmi": "obesity",
+    "week": 29,
+    "min": 4.2,
+    "max": 7.5
+  },
+  {
+    "bmi": "obesity",
+    "week": 30,
+    "min": 4.5,
+    "max": 7.9
+  },
+  {
+    "bmi": "obesity",
+    "week": 31,
+    "min": 4.7,
+    "max": 8.2
+  },
+  {
+    "bmi": "obesity",
+    "week": 32,
+    "min": 4.9,
+    "max": 8.6
+  },
+  {
+    "bmi": "obesity",
+    "week": 33,
+    "min": 5.2,
+    "max": 8.9
+  },
+  {
+    "bmi": "obesity",
+    "week": 34,
+    "min": 5.4,
+    "max": 9.3
+  },
+  {
+    "bmi": "obesity",
+    "week": 35,
+    "min": 5.6,
+    "max": 9.6
+  },
+  {
+    "bmi": "obesity",
+    "week": 36,
+    "min": 5.9,
+    "max": 10.0
+  },
+  {
+    "bmi": "obesity",
+    "week": 37,
+    "min": 6.1,
+    "max": 10.3
+  },
+  {
+    "bmi": "obesity",
+    "week": 38,
+    "min": 6.3,
+    "max": 10.6
+  },
+  {
+    "bmi": "obesity",
+    "week": 39,
+    "min": 6.6,
+    "max": 11.0
+  },
+  {
+    "bmi": "obesity",
+    "week": 40,
+    "min": 6.8,
+    "max": 11.3
+  }
+]
