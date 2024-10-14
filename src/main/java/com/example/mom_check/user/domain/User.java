@@ -5,6 +5,7 @@ import com.example.mom_check.baby.domain.Baby;
 import com.example.mom_check.common.domain.BaseTimeEntity;
 import com.example.mom_check.diary.domain.Diary;
 import com.example.mom_check.schedule.domain.Schedule;
+import com.example.mom_check.weight.domain.Weight;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -41,6 +42,9 @@ public class User extends BaseTimeEntity implements UserDetails {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private Baby baby;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+    private Weight weight;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private InitialPhysical initialPhysical;
