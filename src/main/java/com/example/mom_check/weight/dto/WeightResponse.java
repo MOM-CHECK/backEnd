@@ -5,6 +5,7 @@ import com.example.mom_check.weight.domain.Weight;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Getter
 public class WeightResponse {
     private UUID id;
-    private String date;
+    private LocalDate date;
     private Double weight;
     private WeightStatusType status;
     private LocalDateTime createdAt;

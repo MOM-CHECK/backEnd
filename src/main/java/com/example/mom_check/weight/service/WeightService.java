@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -87,11 +88,11 @@ public class WeightService {
         );
     }
 
-    private Boolean isExistDateWeight(String date, User user) {
+    private Boolean isExistDateWeight(LocalDate date, User user) {
         return weightRepository.existsByDateAndUser(date, user);
     }
 
-    private Weight findByDateAndUser(String date, User user) {
+    private Weight findByDateAndUser(LocalDate date, User user) {
         return weightRepository.findByDateAndUser(date, user)
                 .orElseThrow(()->new BusinessException(WEIGHT_NOT_FOUND));
     }
