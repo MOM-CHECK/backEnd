@@ -67,21 +67,24 @@ public class WeightService {
         WeightGainRecommendation recommend = recommendRepository.findByBmiAndWeek(bmi, week)
                 .orElseThrow(()-> new BusinessException(WEIGHT_RECOMMENDATION_NOT_FOUND));
 
+        Weight weight = findByDateAndUser(req.getDate(), user);
+
+        Double initialWeight = user.getInitialPhysical().getWeight();
         WeightStatusType status;
-        if (recommend.getMin() <= req.getWeight() & req.getWeight() <= recommend.getMax()) {
+        if (recommend.getMin() <= weight.getWeight() - initialWeight & weight.getWeight() - initialWeight <= recommend.getMax()) {
             status = WeightStatusType.GOOD;
-        } else if (recommend.getMin() > req.getWeight()) {
+        } else if (recommend.getMin() > weight.getWeight() - initialWeight) {
             status = WeightStatusType.UNDER;
         } else {
             status = WeightStatusType.OVER;
         }
 
-        Weight weight = findByDateAndUser(req.getDate(), user);
-
         weight.update(status);
 
         return WeightStatusResponse.toDto(
                 week,
+                initialWeight,
+                weight.getWeight(),
                 status,
                 recommend.getMin(),
                 recommend.getMax()

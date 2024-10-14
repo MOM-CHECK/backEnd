@@ -14,7 +14,4 @@ import java.time.LocalDate;
 public class WeightStatusRequest {
     @NotNull(message = "날짜를 입력하지 않았습니다.")
     private LocalDate date;
-    
-    @NotNull(message = "몸무게를 입력하지 않았습니다.")
-    private Double weight;
 }

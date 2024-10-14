@@ -8,11 +8,13 @@ import lombok.Getter;
 @Getter
 public class WeightStatusResponse {
     private Integer week;
+    private Double initialWeight;
+    private Double weight;
     private WeightStatusType status;
     private Double min;
     private Double max;
 
-    public static WeightStatusResponse toDto(Integer week, WeightStatusType status, Double min, Double max) {
-        return new WeightStatusResponse(week, status, min, max);
+    public static WeightStatusResponse toDto(Integer week, Double initialWeight, Double weight, WeightStatusType status, Double min, Double max) {
+        return new WeightStatusResponse(week, initialWeight, weight, status, min, max);
     }
 }
