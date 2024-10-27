@@ -64,7 +64,8 @@ public class DiaryService {
         diary.update(
                 req.getTitle(),
                 req.getIcon(),
-                req.getContent()
+                req.getContent(),
+                req.getDate()
         );
 
         return DetailDiaryResponse.toDto(diary);
