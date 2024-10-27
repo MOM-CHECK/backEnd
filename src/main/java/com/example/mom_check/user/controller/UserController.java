@@ -5,17 +5,27 @@ import com.example.mom_check.common.response.CustomResponse;
 import com.example.mom_check.user.domain.User;
 import com.example.mom_check.user.dto.InitialPhysicalRequest;
 import com.example.mom_check.user.dto.InitialPhysicalResponse;
+import com.example.mom_check.user.dto.UserInfoResponse;
 import com.example.mom_check.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CustomResponse findUser(@PathVariable("id") UUID id, @Login User user) {
+        UserInfoResponse res = userService.findUser(id, user);
+        return CustomResponse.response(HttpStatus.OK, "사용자의 정보를 정상적으로 조회했습니다.", res);
+    }
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
