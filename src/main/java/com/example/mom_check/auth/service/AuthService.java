@@ -60,7 +60,7 @@ public class AuthService {
         }
         String accessToken = getAccessToken(user);
         Baby baby = findBabyByUser(user);
-        return LoginResponse.toDto(accessToken, baby);
+        return LoginResponse.toDto(user, accessToken, baby);
     }
 
     private String getAccessToken(User user) {

@@ -4,6 +4,7 @@ import com.example.mom_check.user.domain.InitialPhysical;
 import com.example.mom_check.user.domain.User;
 import com.example.mom_check.user.dto.InitialPhysicalRequest;
 import com.example.mom_check.user.dto.InitialPhysicalResponse;
+import com.example.mom_check.user.dto.UserInfoResponse;
 import com.example.mom_check.user.repository.InitialPhysicalRepository;
 import com.example.mom_check.user.repository.UserRepository;
 import com.example.mom_check.common.exception.BusinessException;
@@ -20,6 +21,22 @@ import static com.example.mom_check.common.exception.ErrorCode.*;
 public class UserService {
     private final UserRepository userRepository;
     private final InitialPhysicalRepository initialPhysicalRepository;
+
+    @Transactional
+    public UserInfoResponse findUser(UUID id, User loggedInUser) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
+
+        validateUser(user, loggedInUser);
+
+        return UserInfoResponse.toDto(loggedInUser);
+    }
+
+    private void validateUser(User user, User loggedInUser) {
+        if (user != loggedInUser) {
+            throw new BusinessException(UNAUTHORIZED_MEMBER);
+        }
+    }
 
     @Transactional
     public User findByEmail(String email) {
