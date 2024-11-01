@@ -13,8 +13,11 @@ import java.util.List;
 @Configuration
 @RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
-    @Value("${mom-check.url}")
-    private String url;
+    @Value("${mom-check.server.url}")
+    private String serverUrl;
+
+    @Value("${mom-check.client.url}")
+    private String clientUrl;
 
     private final AuthService authService;
 
@@ -26,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(url)
+                .allowedOriginPatterns(serverUrl, clientUrl)
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true);
     }
