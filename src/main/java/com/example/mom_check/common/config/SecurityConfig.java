@@ -38,7 +38,7 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/auth/join"),
                                 new AntPathRequestMatcher("/auth/login"),
                                 new AntPathRequestMatcher("/users"),
-                                new AntPathRequestMatcher("/users/*"),
+                                new AntPathRequestMatcher("/users/me"),
                                 new AntPathRequestMatcher("/users/initial-physical"),
                                 new AntPathRequestMatcher("/babies"),
                                 new AntPathRequestMatcher("/babies/*"),
@@ -47,7 +47,8 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/schedules"),
                                 new AntPathRequestMatcher("/schedules/*"),
                                 new AntPathRequestMatcher("/weight"),
-                                new AntPathRequestMatcher("/weight/*")
+                                new AntPathRequestMatcher("/weight/*"),
+                                new AntPathRequestMatcher("/mypage")
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
