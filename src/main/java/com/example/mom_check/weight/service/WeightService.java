@@ -10,6 +10,7 @@ import com.example.mom_check.weight.repository.WeightGainRecommendationRepositor
 import com.example.mom_check.weight.repository.WeightRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,7 +64,7 @@ public class WeightService {
     }
 
     @Transactional
-    public WeightStatusResponse getWeightStatus(User user, Integer week, WeightStatusRequest req) {
+    public WeightStatusResponse getWeightStatus(User user, Integer week, LocalDate date) {
         validateWeek(week);
 
         Double initialBMI = user.getInitialPhysical().getBmi();
@@ -71,7 +72,7 @@ public class WeightService {
 
         WeightGainRecommendation recommend = getWeightRecommendation(BMIStatus, week);
 
-        Weight myWeightInfo = findByDateAndUser(req.getDate(), user);
+        Weight myWeightInfo = findByDateAndUser(date, user);
 
         Double currentWeight = myWeightInfo.getWeight();
         Double initialWeight = getInitialWeight(user);
