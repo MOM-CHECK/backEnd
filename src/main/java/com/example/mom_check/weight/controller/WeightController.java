@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,8 +43,8 @@ public class WeightController {
 
     @GetMapping("/status")
     @ResponseStatus(HttpStatus.OK)
-    public CustomResponse getWeightStatus(@RequestParam("week") Integer week, @Validated @RequestBody WeightStatusRequest req, @Login User user) {
-        WeightStatusResponse status = weightService.getWeightStatus(user, week, req);
+    public CustomResponse getWeightStatus(@RequestParam("week") Integer week, @RequestParam("date") LocalDate date, @Login User user) {
+        WeightStatusResponse status = weightService.getWeightStatus(user, week, date);
         return CustomResponse.response(HttpStatus.OK, "몸무게의 적정량을 정상적으로 조회했습니다.", status);
     }
 }
