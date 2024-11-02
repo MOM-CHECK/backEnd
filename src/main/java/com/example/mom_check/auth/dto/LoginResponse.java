@@ -10,12 +10,11 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 public class LoginResponse {
-    private UUID id;
+    private UUID userId;
+    private UUID babyId;
     private String accessToken;
-    private String babyName;
-    private String expectedBirth;
 
     public static LoginResponse toDto(User user, String accessToken, Baby baby) {
-        return new LoginResponse(user.getId(), accessToken, baby.getName(), baby.getExpectedBirth());
+        return new LoginResponse(user.getId(), baby.getId(), accessToken);
     }
 }
