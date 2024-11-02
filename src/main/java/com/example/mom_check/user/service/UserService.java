@@ -2,6 +2,7 @@ package com.example.mom_check.user.service;
 
 import com.example.mom_check.user.domain.InitialPhysical;
 import com.example.mom_check.user.domain.User;
+import com.example.mom_check.user.dto.InitialPhysicalExistResponse;
 import com.example.mom_check.user.dto.InitialPhysicalRequest;
 import com.example.mom_check.user.dto.InitialPhysicalResponse;
 import com.example.mom_check.user.dto.UserInfoResponse;
@@ -73,5 +74,11 @@ public class UserService {
         InitialPhysical physical = initialPhysicalRepository.findById(user.getId())
                 .orElseThrow(() -> new BusinessException(INITIAL_PHYSICAL_NOT_FOUND));
         return InitialPhysicalResponse.toDto(user, physical);
+    }
+
+    @Transactional
+    public InitialPhysicalExistResponse getInitialPhysicalExist(User user) {
+        Boolean isExist = initialPhysicalRepository.existsByUser(user);
+        return InitialPhysicalExistResponse.toDto(isExist);
     }
 }
