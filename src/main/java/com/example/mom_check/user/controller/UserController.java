@@ -20,10 +20,10 @@ import java.util.UUID;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/me")
     @ResponseStatus(HttpStatus.OK)
-    public CustomResponse findUser(@PathVariable("id") UUID id, @Login User user) {
-        UserInfoResponse res = userService.findUser(id, user);
+    public CustomResponse findUser(@Login User user) {
+        UserInfoResponse res = userService.getUser(user);
         return CustomResponse.response(HttpStatus.OK, "사용자의 정보를 정상적으로 조회했습니다.", res);
     }
 
