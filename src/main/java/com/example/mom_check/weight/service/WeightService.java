@@ -64,38 +64,57 @@ public class WeightService {
 
     @Transactional
     public WeightStatusResponse getWeightStatus(User user, Integer week, WeightStatusRequest req) {
-        if (week <= 0 & week > 40) {
-            throw new BusinessException(WRONG_WEEK);
-        }
+        validateWeek(week);
 
         Double initialBMI = user.getInitialPhysical().getBmi();
         String BMIStatus = getBMIStatus(initialBMI);
 
-        WeightGainRecommendation recommend = recommendRepository.findByBmiAndWeek(BMIStatus, week)
-                .orElseThrow(()-> new BusinessException(WEIGHT_RECOMMENDATION_NOT_FOUND));
+        WeightGainRecommendation recommend = getWeightRecommendation(BMIStatus, week);
 
-        Weight weight = findByDateAndUser(req.getDate(), user);
+        Weight myWeightInfo = findByDateAndUser(req.getDate(), user);
 
-        Double initialWeight = user.getInitialPhysical().getWeight();
-        WeightStatusType currentStatus;
+        Double currentWeight = myWeightInfo.getWeight();
+        Double initialWeight = getInitialWeight(user);
+        Double weightDifference = currentWeight - initialWeight;
 
-        if (recommend.getMin() <= weight.getWeight() - initialWeight & weight.getWeight() - initialWeight <= recommend.getMax()) {
-            currentStatus = WeightStatusType.GOOD;
-        } else if (recommend.getMin() > weight.getWeight() - initialWeight) {
-            currentStatus = WeightStatusType.UNDER;
-        } else {
-            currentStatus = WeightStatusType.OVER;
-        }
+        WeightStatusType currentStatus = getWeightStatus(recommend, weightDifference);
 
-        weight.update(currentStatus);
+        myWeightInfo.update(currentStatus);
 
         return WeightStatusResponse.toDto(
                 week,
-                weight.getWeight(),
+                myWeightInfo.getWeight(),
                 currentStatus,
                 recommend.getMin(),
                 recommend.getMax()
         );
+    }
+
+    private WeightStatusType getWeightStatus(WeightGainRecommendation recommend, Double weightDifference) {
+        Double min = recommend.getMin();
+        Double max = recommend.getMax();
+
+        if (min <= weightDifference & weightDifference <= max) {
+            return WeightStatusType.GOOD;
+        } else if (min > weightDifference) {
+            return WeightStatusType.UNDER;
+        }
+        return WeightStatusType.OVER;
+    }
+
+    private Double getInitialWeight(User user) {
+        return user.getInitialPhysical().getWeight();
+    }
+
+    private void validateWeek(Integer week) {
+        if (week <= 0 & week > 40) {
+            throw new BusinessException(WRONG_WEEK);
+        }
+    }
+
+    private WeightGainRecommendation getWeightRecommendation(String BMIStatus, Integer week) {
+        return recommendRepository.findByBmiAndWeek(BMIStatus, week)
+                .orElseThrow(()-> new BusinessException(WEIGHT_RECOMMENDATION_NOT_FOUND));
     }
 
     private String getBMIStatus(Double bmi) {
