@@ -23,6 +23,20 @@ public class UserService {
     private final InitialPhysicalRepository initialPhysicalRepository;
 
     @Transactional
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    public Boolean isDuplicateEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(()->new BusinessException(USER_NOT_FOUND));
+    }
+
+    @Transactional
     public UserInfoResponse getUser(User loggedInUser) {
         return UserInfoResponse.toDto(loggedInUser);
     }
