@@ -23,25 +23,8 @@ public class UserService {
     private final InitialPhysicalRepository initialPhysicalRepository;
 
     @Transactional
-    public UserInfoResponse findUser(UUID id, User loggedInUser) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
-
-        validateUser(user, loggedInUser);
-
+    public UserInfoResponse getUser(User loggedInUser) {
         return UserInfoResponse.toDto(loggedInUser);
-    }
-
-    private void validateUser(User user, User loggedInUser) {
-        if (user != loggedInUser) {
-            throw new BusinessException(UNAUTHORIZED_MEMBER);
-        }
-    }
-
-    @Transactional
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
     }
 
     @Transactional
