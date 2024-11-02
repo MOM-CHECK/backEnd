@@ -26,6 +26,10 @@ public class WeightService {
     private final WeightRepository weightRepository;
     private final WeightGainRecommendationRepository recommendRepository;
 
+    private static final String UNDER = "under";
+    private static final String NORMAL = "normal";
+    private static final String OBESITY = "obesity";
+
     @Transactional
     public WeightResponse createWeight(User user, CreateWeightRequest req) {
         if (isExistDateWeight(req.getDate(), user)) {
@@ -59,36 +63,48 @@ public class WeightService {
     }
 
     @Transactional
-    public WeightStatusResponse getWeightStatus(User user, Integer week, String bmi, WeightStatusRequest req) {
+    public WeightStatusResponse getWeightStatus(User user, Integer week, WeightStatusRequest req) {
         if (week <= 0 & week > 40) {
             throw new BusinessException(WRONG_WEEK);
         }
 
-        WeightGainRecommendation recommend = recommendRepository.findByBmiAndWeek(bmi, week)
+        Double initialBMI = user.getInitialPhysical().getBmi();
+        String BMIStatus = getBMIStatus(initialBMI);
+
+        WeightGainRecommendation recommend = recommendRepository.findByBmiAndWeek(BMIStatus, week)
                 .orElseThrow(()-> new BusinessException(WEIGHT_RECOMMENDATION_NOT_FOUND));
 
         Weight weight = findByDateAndUser(req.getDate(), user);
 
         Double initialWeight = user.getInitialPhysical().getWeight();
-        WeightStatusType status;
+        WeightStatusType currentStatus;
+
         if (recommend.getMin() <= weight.getWeight() - initialWeight & weight.getWeight() - initialWeight <= recommend.getMax()) {
-            status = WeightStatusType.GOOD;
+            currentStatus = WeightStatusType.GOOD;
         } else if (recommend.getMin() > weight.getWeight() - initialWeight) {
-            status = WeightStatusType.UNDER;
+            currentStatus = WeightStatusType.UNDER;
         } else {
-            status = WeightStatusType.OVER;
+            currentStatus = WeightStatusType.OVER;
         }
 
-        weight.update(status);
+        weight.update(currentStatus);
 
         return WeightStatusResponse.toDto(
                 week,
-                initialWeight,
                 weight.getWeight(),
-                status,
+                currentStatus,
                 recommend.getMin(),
                 recommend.getMax()
         );
+    }
+
+    private String getBMIStatus(Double bmi) {
+        if (bmi < 18.5) {
+            return UNDER;
+        } else if (bmi < 25) {
+            return NORMAL;
+        }
+        return OBESITY;
     }
 
     private Boolean isExistDateWeight(LocalDate date, User user) {
