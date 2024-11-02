@@ -23,25 +23,22 @@ public class UserService {
     private final InitialPhysicalRepository initialPhysicalRepository;
 
     @Transactional
-    public UserInfoResponse findUser(UUID id, User loggedInUser) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
-
-        validateUser(user, loggedInUser);
-
-        return UserInfoResponse.toDto(loggedInUser);
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 
-    private void validateUser(User user, User loggedInUser) {
-        if (user != loggedInUser) {
-            throw new BusinessException(UNAUTHORIZED_MEMBER);
-        }
+    public Boolean isDuplicateEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(()->new BusinessException(USER_NOT_FOUND));
     }
 
     @Transactional
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
+    public UserInfoResponse getUser(User loggedInUser) {
+        return UserInfoResponse.toDto(loggedInUser);
     }
 
     @Transactional

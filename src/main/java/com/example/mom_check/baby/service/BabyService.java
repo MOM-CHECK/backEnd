@@ -43,6 +43,11 @@ public class BabyService {
         return DetailBabyResponse.toDto(baby);
     }
 
+    public Baby findBabyByUser(User user) {
+        return babyRepository.findByUser(user)
+                .orElseThrow(() -> new BusinessException(BABY_NOT_FOUND));
+    }
+
     private SexType validateSexType(String sex) {
         return SexType.fromSexType(sex);
     }
