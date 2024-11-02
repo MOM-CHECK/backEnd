@@ -42,8 +42,8 @@ public class WeightController {
 
     @GetMapping("/status")
     @ResponseStatus(HttpStatus.OK)
-    public CustomResponse getWeightStatus(@RequestParam("week") Integer week, @RequestParam("bmi") String bmi, @Validated @RequestBody WeightStatusRequest req, @Login User user) {
-        WeightStatusResponse status = weightService.getWeightStatus(user, week, bmi, req);
+    public CustomResponse getWeightStatus(@RequestParam("week") Integer week, @Validated @RequestBody WeightStatusRequest req, @Login User user) {
+        WeightStatusResponse status = weightService.getWeightStatus(user, week, req);
         return CustomResponse.response(HttpStatus.OK, "몸무게의 적정량을 정상적으로 조회했습니다.", status);
     }
 }
